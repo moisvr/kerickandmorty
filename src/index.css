@@ -1,13 +1,26 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*
+  1. Posicionamiento
+  2. Modelo de caja (box model)
+  3. Tipografía
+  4. Visuales
+  5. Otros
+*/
+:root {
+  --shark: #24282F;
+  --tuna: #3C3E44;
+  --white: #ffffff;
+  --granny-smith: #919E9E;
+  --fiord: #3D4E6B;
+  --status-alive: #55cc44;
+  --valencia: #D63D2E;
+  --silver-chalice: #9e9e9e;
+  --off-white: #FAF8F7;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
 }

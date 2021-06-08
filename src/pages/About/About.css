@@ -1,0 +1,40 @@
+.main-aboutus{
+    width: 100%;
+    height: auto;
+    background-color: var(--fiord);
+}
+/** About one */
+.about--container{
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    max-width: 450px;
+    margin: 0 auto;
+    text-align: center;
+}
+.about--info{
+    width: 100%;
+    padding: 20px;
+    font-family: sans-serif;
+}
+.about--info h1 {
+    color: #ADBDD9;
+    font-size: 2.4rem;
+}
+.about--info p{
+    color: white;
+    font-size: 1.6rem;
+    padding-top: 7px;
+}
+.about-one--img{
+    width: 100%;
+    height: auto;
+}
+.about--img img {
+    width: 100%;
+    display: block;
+}
+/** About two */
+.about-two{
+    
+}
