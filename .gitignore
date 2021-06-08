@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#errors
+src/assets/icons/OpenShot-v2.5.1-x86_64.exe
