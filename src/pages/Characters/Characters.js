@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SearchForm from '../../components/SearchForm/SearchForm';
+import EmptyFavoriteCard from '../../components/EmptyFavoriteCard/EmptyFavoriteCard';
 import './Characters.css';
 
 class Characters extends React.Component {
@@ -27,7 +28,7 @@ class Characters extends React.Component {
     }
 
     handleSubmit = (e) => {
-        console.log(e);
+        e.preventDefault();
     }
 
     handleDropDownForm = () => {
@@ -51,10 +52,8 @@ class Characters extends React.Component {
         let rotate_class = "main-characters--head__rotate-span";
         if(isFormVisible){
             searchForm = <section>
-                                <SearchForm 
-                                    onSubmit={this.handleSubmit}
-                                />
-                            </section>;
+                            <SearchForm onSubmit={this.handleSubmit} />
+                        </section>;
             rotate_class = "main-characters--head__rotate-span";
         }else{
             searchForm = null;
@@ -69,6 +68,8 @@ class Characters extends React.Component {
                     </button>
                 </div>
                 {searchForm}
+                <EmptyFavoriteCard />
+                <p>No info yet! start searching info using the form above the page!</p>
             </main>
         )
     }

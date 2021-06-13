@@ -45,6 +45,9 @@ function SearchForm(props) {
                     <option value="Four"></option>
                 </datalist>
             </div>
+            <button className="search-form--submit">
+                Find character(s)
+            </button>
         </form>
     )
 }

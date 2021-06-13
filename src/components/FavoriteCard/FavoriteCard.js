@@ -3,8 +3,6 @@ import React from 'react';
 import './FavoriteCard.css';
 
 function FavoriteCard(props) {
-    // console.log("favorite card rendered!");
-    // console.log(props.char_id);
     let status_class;
     if(props.status === "Alive"){
         status_class = "favorite-card__status-alive";

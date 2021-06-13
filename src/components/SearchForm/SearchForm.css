@@ -37,3 +37,19 @@
 .main-characters--head__rotate-span{
     transform: rotate(180deg);
 }
+
+.search-form--submit{
+    display: block;
+    width: 140px;
+    height: 45px;
+    margin: 20px auto 0;
+    font-size: 1.4rem;
+    background-color: var(--tuna);
+    border: solid 1px #707070;
+    color: white;
+    transition: 0.1s;
+    cursor: pointer;
+}
+.search-form--submit:active {
+    background-color: #4e5158;
+}
