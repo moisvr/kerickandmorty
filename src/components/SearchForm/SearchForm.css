@@ -1,0 +1,39 @@
+.search-form {
+    display: block;
+    width: 80%;
+    min-width: 270px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    color: white;
+}
+
+.search-form--group{
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form--group label{
+    padding-left: 3px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+}
+
+.search-form--input-container{
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+}
+.search-form--input-container input{
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    background-color: white;
+    border: none;
+}
+.main-characters--head__rotate-span{
+    transform: rotate(180deg);
+}

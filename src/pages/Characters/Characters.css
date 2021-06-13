@@ -1,0 +1,42 @@
+.main-characters{
+    width: 100%;
+    height: auto;
+    background-color: var(--fiord);
+}
+.main-characters--head{
+    padding-bottom: 20px;
+}
+.main-characters--head h1 {
+    padding-top: 20px;
+    font-family: sans-serif;
+    font-size: 2.4rem;
+    color: var(--white);
+    text-align: center;
+}
+.main-characters--head > button {
+    display: block;
+    width: 110px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: sans-serif;
+    font-size: 2rem;
+    text-align: center;   
+    background-color: var(--white);
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.main-characters--head > button:active{
+    background-color: rgb(207, 207, 207);
+}
+.main-characters--head > button > span{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-image: url('../../assets/icons/down-chevron.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
