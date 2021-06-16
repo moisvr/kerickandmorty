@@ -4,8 +4,8 @@ import lightHouse from '../../assets/img/Lighthouse-pana.png';
 
 function EmptyFavoriteCard() {
     return (
-        <article /* onClick={() => props.onOpenModal(props.char_id)} */ className="favorite-card">
-            <img src={lightHouse} alt="" />
+        <article className="favorite-card">
+            <img src={lightHouse} alt="empty card image" />
             <div className="favorite-card--title">
                 <h2>No name</h2>
                 <p className="favorite-card--status"><span className="favorite-card__status-unknown"></span>No status - No species</p>

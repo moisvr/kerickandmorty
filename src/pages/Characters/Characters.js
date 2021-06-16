@@ -1,14 +1,27 @@
 import React from 'react';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
+import Loader from '../../components/Loader/Loader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import EmptyFavoriteCard from '../../components/EmptyFavoriteCard/EmptyFavoriteCard';
+
+import NoData from '../../assets/img/No-data-pana.png';
 import './Characters.css';
 
 class Characters extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            display: false
+            display: false,
+            error: false,
+            loading: false,
+            data: {},
+            form: {
+                name: '',
+                status: '',
+                species: '',
+                gender: ''
+            }
         }
     }
 
@@ -27,8 +40,57 @@ class Characters extends React.Component {
         });
     }
 
+    handleChange = (e) => {
+        this.setState({
+            form: {
+               ...this.state.form,
+               [e.target.name]: e.target.value
+            }
+         })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
+        this.setState({loading: true, error: false});
+
+        let name = this.state.form.name;
+        let status = this.state.form.status;
+        let species = this.state.form.species;
+        let gender = this.state.form.gender;
+        const client = new ApolloClient({
+            uri: 'https://rickandmortyapi.com/graphql',
+            cache: new InMemoryCache()
+        });
+        client.query({
+            query: gql`
+                query {
+                    characters(
+                        filter: { 
+                            name: "${name}",
+                            status: "${status}",
+                            species: "${species}",
+                            gender: "${gender}"
+                        }
+                    )
+                    {
+                        results {
+                            id,
+                            name,
+                            image
+                        }
+                    }
+                }
+            `
+        })
+        .then((result) => {
+            //!working on result...
+            this.setState({ loading: false });
+            console.log(result)
+        })
+        .catch(err => {
+            this.setState({ loading: false, error: true });
+            console.log("error: "+err);
+        });
     }
 
     handleDropDownForm = () => {
@@ -37,27 +99,59 @@ class Characters extends React.Component {
             : this.setState({ display: false });
     }
 
-    componentDidMount(){
-        const URL = 'https://rickandmortyapi.com/api/character';
-        // this.fetchData(URL)
-        //     .then(data => {
-        //         console.log(data);
-        //     })
-        //     .catch(err => console.log("hijo mío, error "+err));
-    }
-
     render(){
         let isFormVisible = this.state.display;
         let searchForm;
+        let errorContainer;
         let rotate_class = "main-characters--head__rotate-span";
         if(isFormVisible){
             searchForm = <section>
-                            <SearchForm onSubmit={this.handleSubmit} />
+                            <SearchForm 
+                                onSubmit={this.handleSubmit} 
+                                onChange={this.handleChange}
+                            />
                         </section>;
             rotate_class = "main-characters--head__rotate-span";
         }else{
             searchForm = null;
             rotate_class = "";
+        }
+
+        if(this.state.loading){
+            return(
+            <main className="main-characters">
+                <div className="main-characters--head">
+                    <h1>Characters Page</h1>
+                    <button onClick={this.handleDropDownForm}>
+                        sort by <span className={rotate_class}></span>
+                    </button>
+                </div>
+                {searchForm}
+                <div className="main-characters--loader-container">
+                    <Loader loading={true} />
+                </div>
+            </main>
+            )
+        }else
+        if(this.state.error){
+            return (
+                <main className="main-characters">
+                    <div className="main-characters--head">
+                        <h1>Characters Page</h1>
+                        <button onClick={this.handleDropDownForm}>
+                            sort by <span className={rotate_class}></span>
+                        </button>
+                    </div>
+                    {searchForm}
+                    <div className="main-characters--error-container">
+                        <h2>Error: 404: Not Found</h2>
+                        <div className="main-characters--img-container">
+                            <img src={NoData} alt="no data found image"/>
+                        </div>
+                        <p>Looks like the data inserted in the form didn't found anything, try again</p>
+                    </div>
+                </main>
+            )
         }
         return (
             <main className="main-characters">

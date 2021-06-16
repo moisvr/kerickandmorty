@@ -8,24 +8,23 @@ function SearchForm(props) {
             <div className="search-form--group">
                 <label>Name</label>
                 <div className="search-form--input-container">
-                    <input type="text" name="name" placeholder="name..." />
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="name..."
+                        onChange={props.onChange}
+                    />
                 </div>
-            </div>
-            <div className="search-form--group">
-                <label>Origin</label>
-                <div className="search-form--input-container">
-                    <input list="origin" placeholder="select..." />
-                </div>
-                <datalist id="origin">
-                    <option value="Earth"></option>
-                    <option value="Mars"></option>
-                    <option value="Pluto"></option>
-                </datalist>
             </div>
             <div className="search-form--group">
                 <label>Status</label>
                 <div className="search-form--input-container">
-                    <input list="status" placeholder="select..." />
+                    <input 
+                        list="status"
+                        placeholder="select..."
+                        name="status"
+                        onChange={props.onChange}
+                    />
                 </div>
                 <datalist id="status">
                     <option value="Alive"></option>
@@ -34,15 +33,31 @@ function SearchForm(props) {
                 </datalist>
             </div>
             <div className="search-form--group">
-                <label>Season</label>
+                <label>Species</label>
                 <div className="search-form--input-container">
-                    <input list="season" placeholder="select..." />
+                    <input 
+                        type="text" 
+                        name="species" 
+                        placeholder="species...(e.g. human, animal, humanoid)"
+                        onChange={props.onChange}
+                    />
                 </div>
-                <datalist id="season">
-                    <option value="One"></option>
-                    <option value="Two"></option>
-                    <option value="Three"></option>
-                    <option value="Four"></option>
+            </div>
+            <div className="search-form--group">
+                <label>Gender</label>
+                <div className="search-form--input-container">
+                    <input 
+                        list="gender"
+                        placeholder="select..."
+                        name="gender"
+                        onChange={props.onChange}
+                    />
+                </div>
+                <datalist id="gender">
+                    <option value="Female"></option>
+                    <option value="Male"></option>
+                    <option value="Genderless"></option>
+                    <option value="Unknown"></option>
                 </datalist>
             </div>
             <button className="search-form--submit">
