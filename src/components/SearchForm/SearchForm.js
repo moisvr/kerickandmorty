@@ -28,7 +28,7 @@ function SearchForm(props) {
                 </div>
                 <datalist id="status">
                     <option value="Alive"></option>
-                    <option value="Death"></option>
+                    <option value="Dead"></option>
                     <option value="Unknown"></option>
                 </datalist>
             </div>

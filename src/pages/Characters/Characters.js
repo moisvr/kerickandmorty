@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import Loader from '../../components/Loader/Loader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import EmptyFavoriteCard from '../../components/EmptyFavoriteCard/EmptyFavoriteCard';
+import FavoriteCard from '../../components/FavoriteCard/FavoriteCard';
 
 import NoData from '../../assets/img/No-data-pana.png';
 import './Characters.css';
@@ -15,7 +16,7 @@ class Characters extends React.Component {
             display: false,
             error: false,
             loading: false,
-            data: {},
+            data: [],
             form: {
                 name: '',
                 status: '',
@@ -71,12 +72,28 @@ class Characters extends React.Component {
                             species: "${species}",
                             gender: "${gender}"
                         }
-                    )
+                    ) 
                     {
+                        info {
+                            count
+                        }
                         results {
                             id,
                             name,
-                            image
+                            status,
+                            image,
+                            species,
+                            location {
+                                name
+                            }
+                            origin {
+                                name,
+                                dimension
+                            }
+                            episode {
+                                name,
+                                air_date
+                            }
                         }
                     }
                 }
@@ -84,12 +101,10 @@ class Characters extends React.Component {
         })
         .then((result) => {
             //!working on result...
-            this.setState({ loading: false });
-            console.log(result)
+            this.setState({ loading: false, data: result.data.characters.results });
         })
         .catch(err => {
-            this.setState({ loading: false, error: true });
-            console.log("error: "+err);
+            this.setState({ loading: false, error: true, data: [] });
         });
     }
 
@@ -100,9 +115,10 @@ class Characters extends React.Component {
     }
 
     render(){
-        let isFormVisible = this.state.display;
         let searchForm;
-        let errorContainer;
+        let emptyCard;
+        let isFormVisible = this.state.display;
+        let charactersData = this.state.data;
         let rotate_class = "main-characters--head__rotate-span";
         if(isFormVisible){
             searchForm = <section>
@@ -116,7 +132,11 @@ class Characters extends React.Component {
             searchForm = null;
             rotate_class = "";
         }
-
+        if(charactersData.length > 0){
+            emptyCard = null;
+        }else{
+            emptyCard = <EmptyFavoriteCard />;
+        }
         if(this.state.loading){
             return(
             <main className="main-characters">
@@ -162,7 +182,30 @@ class Characters extends React.Component {
                     </button>
                 </div>
                 {searchForm}
-                <EmptyFavoriteCard />
+                <section className="main-characters--cards-container">
+                    
+                    {emptyCard}
+                    {charactersData.map((characters) => {
+                        return (
+                            <FavoriteCard
+                                key={characters.id}
+                                char_id={characters.id}
+                                img={characters.image}
+                                name={characters.name}
+                                status={characters.status}
+                                species={characters.species}
+                                location={characters.location.name}
+                                species={characters.species}
+                                origin={characters.origin.name}
+
+                                modalIsOpen={this.state.modalIsOpen}
+                                onOpenModal={this.handleOpenModal} 
+                                onCloseModal={this.handleCloseModal} 
+                            />
+                        )
+                    })}
+                </section>
+                {/* <p>total: 240</p> */}
                 <p>No info yet! start searching info using the form above the page!</p>
             </main>
         )
