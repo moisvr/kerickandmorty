@@ -162,7 +162,6 @@ class Home extends React.Component {
                                     species={character.species}
                                     origin={character.origin}
 
-                                    modalIsOpen={this.state.modalIsOpen}
                                     onOpenModal={this.handleOpenModal} 
                                     onCloseModal={this.handleCloseModal} 
                                 />

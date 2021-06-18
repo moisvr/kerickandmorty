@@ -1,6 +1,7 @@
 .main-characters{
     width: 100%;
     height: auto;
+    padding-bottom: 20px;
     border-top: solid 3px #ac4d40;
     background-color: var(--fiord);
 }
@@ -54,7 +55,6 @@
     color: white;
 }
 .main-characters--loader-container{
-    padding: 20vh;
     text-align: center;
 }
 /** error container */

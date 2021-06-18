@@ -5,6 +5,7 @@ import Loader from '../../components/Loader/Loader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import EmptyFavoriteCard from '../../components/EmptyFavoriteCard/EmptyFavoriteCard';
 import FavoriteCard from '../../components/FavoriteCard/FavoriteCard';
+import InfoFavoriteCard from '../../components/InfoFavoriteCard/InfoFavoriteCard';
 
 import NoData from '../../assets/img/No-data-pana.png';
 import './Characters.css';
@@ -16,14 +17,36 @@ class Characters extends React.Component {
             display: false,
             error: false,
             loading: false,
+            modalIsOpen: false,
+            modalLoading: false,
             data: [],
             form: {
                 name: '',
                 status: '',
                 species: '',
                 gender: ''
-            }
+            },
+            extraInfo: {}
         }
+    }
+
+    handleOpenModal = (e) => {
+        let characters = this.state.data;
+        let char_selected = characters.find((element) => element.id === e);
+        this.setState({
+            modalLoading: false,
+            extraInfo: {
+                selectedCharacter: char_selected,
+                dimensionData: char_selected.origin,
+                episodeData: char_selected.episode[0]
+            }
+        });
+        this.setState({ 
+            modalIsOpen: true, 
+        });
+    }
+    handleCloseModal = (e) => {
+        this.setState({ modalIsOpen: false });
     }
 
     fetchData = (url_api) => {
@@ -100,10 +123,9 @@ class Characters extends React.Component {
             `
         })
         .then((result) => {
-            //!working on result...
             this.setState({ loading: false, data: result.data.characters.results });
         })
-        .catch(err => {
+        .catch((err) => {
             this.setState({ loading: false, error: true, data: [] });
         });
     }
@@ -117,6 +139,8 @@ class Characters extends React.Component {
     render(){
         let searchForm;
         let emptyCard;
+        let extraInfo;
+        let noInfoYetText;
         let isFormVisible = this.state.display;
         let charactersData = this.state.data;
         let rotate_class = "main-characters--head__rotate-span";
@@ -134,25 +158,19 @@ class Characters extends React.Component {
         }
         if(charactersData.length > 0){
             emptyCard = null;
+            noInfoYetText = null;
         }else{
             emptyCard = <EmptyFavoriteCard />;
+            noInfoYetText = <p>No info yet! start searching info using the form above the page!</p>;
         }
-        if(this.state.loading){
-            return(
-            <main className="main-characters">
-                <div className="main-characters--head">
-                    <h1>Characters Page</h1>
-                    <button onClick={this.handleDropDownForm}>
-                        sort by <span className={rotate_class}></span>
-                    </button>
-                </div>
-                {searchForm}
-                <div className="main-characters--loader-container">
-                    <Loader loading={true} />
-                </div>
-            </main>
-            )
-        }else
+        if(this.state.modalIsOpen){
+            extraInfo = <InfoFavoriteCard 
+                            extraInfo={this.state.extraInfo}
+                            modalIsOpen={this.state.modalIsOpen}
+                            modalLoading={this.state.modalLoading}
+                            onCloseModal={this.handleCloseModal} 
+                        />
+        }
         if(this.state.error){
             return (
                 <main className="main-characters">
@@ -182,8 +200,10 @@ class Characters extends React.Component {
                     </button>
                 </div>
                 {searchForm}
+                <div className="main-characters--loader-container">
+                    <Loader loading={this.state.loading} />
+                </div>
                 <section className="main-characters--cards-container">
-                    
                     {emptyCard}
                     {charactersData.map((characters) => {
                         return (
@@ -198,15 +218,14 @@ class Characters extends React.Component {
                                 species={characters.species}
                                 origin={characters.origin.name}
 
-                                modalIsOpen={this.state.modalIsOpen}
                                 onOpenModal={this.handleOpenModal} 
                                 onCloseModal={this.handleCloseModal} 
                             />
                         )
                     })}
                 </section>
-                {/* <p>total: 240</p> */}
-                <p>No info yet! start searching info using the form above the page!</p>
+                {noInfoYetText}
+                {extraInfo}
             </main>
         )
     }

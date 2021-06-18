@@ -15,9 +15,9 @@
 .Modal--container{
     position: relative;
     top: 1rem;
-    background-color: #FFFFFF;
-    /* padding: 1rem; */
     width: 80%;
+    max-width: 350px;
+    background-color: #FFFFFF;    
 }
 .Modal--close-button{
     position: absolute;
