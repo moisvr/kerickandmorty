@@ -30,7 +30,7 @@ class Header extends React.Component {
                         <Link to="/"><li className="header--dropdown-menu__underline">Home</li></Link>
                         <Link to="/about"><li>About</li></Link>
                         <Link to="/characters"><li>Characters</li></Link>
-                        <li>Locations</li>
+                        <Link to="/locations"><li>Locations</li></Link>
                         <li>Episodes</li>
                     </ul>
                 </section>

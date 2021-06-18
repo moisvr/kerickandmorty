@@ -160,7 +160,7 @@ class Characters extends React.Component {
             emptyCard = null;
             noInfoYetText = null;
         }else{
-            emptyCard = <EmptyFavoriteCard />;
+            emptyCard = <EmptyFavoriteCard page={"characters"} />;
             noInfoYetText = <p>No info yet! start searching info using the form above the page!</p>;
         }
         if(this.state.modalIsOpen){
