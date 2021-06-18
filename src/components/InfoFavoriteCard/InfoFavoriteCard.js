@@ -2,7 +2,6 @@ import React from 'react';
 
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
-import res2 from '../../assets/img/res2.jpeg';
 import './InfoFavoriteCard.css';
 
 function InfoFavoriteCard (props) {

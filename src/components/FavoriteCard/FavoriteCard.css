@@ -1,6 +1,7 @@
 .favorite-card {
     position: relative;
     width: 90%;
+    min-width: 258px;
     max-width: 350px;
     height: auto;
     margin: 10px auto;

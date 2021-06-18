@@ -13,7 +13,9 @@ class Header extends React.Component {
     }
 
     handleDropdownMenu = () => {
-        this.state.display === "none" ? this.setState({ display: "block" }) : this.setState({ display: "none" });
+        this.state.display === "none" 
+            ? this.setState({ display: "block" }) 
+            : this.setState({ display: "none" });
     }
 
     render(){
@@ -27,7 +29,7 @@ class Header extends React.Component {
                     <ul>
                         <Link to="/"><li className="header--dropdown-menu__underline">Home</li></Link>
                         <Link to="/about"><li>About</li></Link>
-                        <li>Characters</li>
+                        <Link to="/characters"><li>Characters</li></Link>
                         <li>Locations</li>
                         <li>Episodes</li>
                     </ul>
