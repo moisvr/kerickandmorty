@@ -1,8 +1,16 @@
 import React from 'react';
 
-import lightHouse from '../../assets/img/Lighthouse-pana.png';
+import lightHousePana from '../../assets/img/Lighthouse-pana.png';
+import lightHouseBro from '../../assets/img/Lighthouse-bro.png';
 
-function EmptyFavoriteCard() {
+function EmptyFavoriteCard(props) {
+    let lightHouse;
+    if(props.page === "characters"){
+        lightHouse = lightHousePana;
+    }else
+    if(props.page === "locations"){
+        lightHouse = lightHouseBro;
+    }
     return (
         <article className="favorite-card">
             <img src={lightHouse} alt="empty card image" />
