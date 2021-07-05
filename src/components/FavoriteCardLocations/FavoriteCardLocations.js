@@ -28,7 +28,7 @@ function FavoriteCardLocations(props) {
             </p>
             {noResidents}
             <div className="favorite-card--residents-container">
-                {residents.map((resident, index) => {
+                {residents.map((resident) => {
                     return(
                         <div key={resident.id} className="resident-container">
                             <img src={resident.image} alt="residents image"/>
