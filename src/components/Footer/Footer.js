@@ -10,11 +10,14 @@ function Footer() {
             <section className="info">
                 <div className="material">
                     <h3>Material</h3>
-                    <div className="flaticon">
-                        <p>Icons by <span className="flatic">flaticon</span></p><span className="flaticon--icon"></span>
+                    <div className="api">
+                        <p>Icons by <span className="flatic"><a href="https://flaticon.com" target="_blank">flaticon</a></span></p><span className="flaticon--icon"></span>
                     </div>
                     <div className="api">
-                        <p>API by <a href="rickandmortyapi.com">rickandmortyapi.com</a></p><span className="api--icon"></span>
+                        <p>API by <a href="https://rickandmortyapi.com" target="_blank">rickandmortyapi.com</a></p><span className="api--icon"></span>
+                    </div>
+                    <div className="api">
+                    <p>Some images provided by <a href="https://storyset.com/" target="_blank">storyset</a></p><span className="storyset--icon"></span>
                     </div>
                 </div>
                 <div className="contact">
@@ -24,8 +27,8 @@ function Footer() {
                 <div className="media">
                     <h3>Media</h3>
                     <div className="media--imgs-container">
-                        <img src={gitlogo} alt="git logo" className="github-icon" />
-                        <img src={instalogo} alt="instagram logo" className="instagram-icon" />
+                        <a href="https://github.com/moisvr" target="_blank"><img src={gitlogo} alt="git logo" className="github-icon" /></a>
+                        <a href="https://www.instagram.com/moisvr/" target="_blank"><img src={instalogo} alt="instagram logo" className="instagram-icon" /></a>
                     </div>
                 </div>
             </section>
