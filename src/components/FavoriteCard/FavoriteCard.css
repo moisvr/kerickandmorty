@@ -67,6 +67,12 @@
 .favorite-card__info-text{
     color: white;
 }
+.favorite-card__air-date {
+    display: inline-block;
+}
+.favorite-card__air-date.favorite-card__info-text {
+    padding-left: 5px;
+} 
 
 .favorite-card--button-container{
     position: absolute;

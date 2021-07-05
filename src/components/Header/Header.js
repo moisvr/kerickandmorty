@@ -31,7 +31,7 @@ class Header extends React.Component {
                         <Link to="/about"><li>About</li></Link>
                         <Link to="/characters"><li>Characters</li></Link>
                         <Link to="/locations"><li>Locations</li></Link>
-                        <li>Episodes</li>
+                        <Link to="/episodes"><li>Episodes</li></Link>
                     </ul>
                 </section>
             </header>

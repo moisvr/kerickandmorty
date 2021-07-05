@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchFormLocations(props) {
+function SearchFormEpisodes(props) {
     return (
         <form className="search-form" onSubmit={props.onSubmit}>
             <div className="search-form--group">
@@ -15,33 +15,22 @@ function SearchFormLocations(props) {
                 </div>
             </div>
             <div className="search-form--group">
-                <label>Type</label>
-                <small>type of location (e.g. planet, dream, space station, etc.)</small>
+                <label>Episode code</label>
+                <small>insert the episode code name (e.g. S03E01 = season 3 episode 1)</small>
                 <div className="search-form--input-container">
                     <input 
-                        type="text" 
-                        name="type" 
-                        placeholder="type..."
-                        onChange={props.onChange}
-                    />
-                </div>
-            </div>
-            <div className="search-form--group">
-                <label>Dimension</label>
-                <div className="search-form--input-container">
-                    <input 
-                        type="text" 
-                        name="dimension" 
-                        placeholder="dimension..."
+                        type="text"
+                        name="episode" 
+                        placeholder="insert code..."
                         onChange={props.onChange}
                     />
                 </div>
             </div>
             <button className="search-form--submit">
-                Find character(s)
+                Find episode(s)
             </button>
         </form>
     )
 }
 
-export default SearchFormLocations
+export default SearchFormEpisodes;
