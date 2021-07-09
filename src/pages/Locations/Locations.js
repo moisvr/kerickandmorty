@@ -115,7 +115,7 @@ class Locations extends Component {
             noInfoYetText = null;
         }else{
             emptyCard = <EmptyFavoriteCard page={"locations"} />;
-            noInfoYetText = <p>No info yet! start searching info using the form above the page!</p>;
+            noInfoYetText = <p>No info yet, start searching info using the form above the page!</p>;
         }
 
         if(this.state.error){
