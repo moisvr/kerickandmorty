@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import wp1 from '../../assets/img/WP-1.png';
-import wp2 from '../../assets/img/WP-2.jpg';
 import FavoriteCard from '../../components/FavoriteCard/FavoriteCard';
 import InfoFavoriteCard from '../../components/InfoFavoriteCard/InfoFavoriteCard';
 import Loader from '../../components/Loader/Loader';
+
+import wp1 from '../../assets/img/WP-1.png';
+import wp2 from '../../assets/img/WP-2.jpg';
+import errorImg from '../../assets/img/RaM.png';
 import './Home.css';
 
 class Home extends React.Component {
@@ -107,12 +109,19 @@ class Home extends React.Component {
         let filteredCharacters;
         const URL_character = `https://rickandmortyapi.com/api/character?page=${random_page}`;
         this.fetchData(URL_character, (error1, data1) => {
-            filteredCharacters = this.filterFavorites(rn, data1);
-            this.setState({ 
-                totalCount: data1.info.count,
-                loading:false,
-                characters: filteredCharacters
-            });
+            if(!data1){
+                this.setState({
+                    error: true
+                })
+            }else{
+                filteredCharacters = this.filterFavorites(rn, data1);
+                this.setState({
+                    error: false, 
+                    totalCount: data1.info.count,
+                    loading:false,
+                    characters: filteredCharacters
+                });
+            }
         });
     }
 
@@ -128,6 +137,36 @@ class Home extends React.Component {
                             modalLoading={this.state.modalLoading}
                             onCloseModal={this.handleCloseModal} 
                         />
+        }
+
+        if(this.state.error){
+            return(
+                <main>
+                <section className="main-slider">
+                    <section className="main-slider--slides">
+                        <article className="main-slider--card">
+                            <img className="main-slider--item" src={wp1} alt="imagen del carrusel" />
+                            <img className="main-slider--item" src={wp2} alt="imagen del carrusel" />
+                        </article>
+                    </section>
+                    <Link to={'/'} id="toLeft" onClick={this.moveSlider} href="#" className="main-slider--left-arrow">
+                        <span className="main-slider--left-arrow-span"></span>
+                    </Link>
+                    <Link onClick={this.moveSlider} id="toRight" to={'/'} className="main-slider--right-arrow">
+                        <span className="main-slider--right-arrow-span"></span>
+                    </Link>
+                </section>
+                <section className="main-favorites">
+                    <h1>No data found!</h1>
+                    <div className="favorite-cards--container">
+                        <div className="favorite-cards--img-container">
+                            <img src={errorImg} alt="error image"/>
+                        </div>
+                    </div>
+                    <p>An error has ocurred during the request of the data, try again later!</p>
+                </section>
+            </main>
+            )
         }
         return (
             <main>
