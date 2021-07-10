@@ -15,6 +15,9 @@ class MyCarousel extends Component {
                 showStatus={false}
                 showThumbs={false}
                 useKeyboardArrows={true}
+                infiniteLoop={true}
+                autoPlay={true}
+                interval={6000}
             >
                 <div>
                     <img src={wp1} />
