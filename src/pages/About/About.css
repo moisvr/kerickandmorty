@@ -35,7 +35,16 @@
     width: 100%;
     display: block;
 }
-/** About two */
-.about-two{
-    
+
+/** Responsive */
+@media (min-width: 600px) {
+    .about--img__last {
+        padding-bottom: 40px;
+    }
+}
+
+@media (min-width: 1300px){
+    .main-slider {
+        /* max-height: 600px; */
+    }
 }
