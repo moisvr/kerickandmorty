@@ -48,7 +48,7 @@ function About() {;
                         <h1>Extra info</h1>
                         <p>Portland selfies locavore pabst typewriter thundercats kickstarter artisan subway tile meggings kombucha readymade mustache cloud bread squid. Hexagon tousled retro brooklynFixie health goth celiac, heirloom woke farm-to-table four loko shaman lomo biodiesel polaroid cronut chartreuse.</p>
                     </div>
-                    <div className="about--img">
+                    <div className="about--img about--img__last">
                         <img src={about4} alt="cartoon image (decoration)"/>
                     </div>
                 </section>

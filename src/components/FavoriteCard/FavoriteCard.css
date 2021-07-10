@@ -3,8 +3,8 @@
     width: 90%;
     min-width: 258px;
     max-width: 350px;
-    height: auto;
-    margin: 10px auto;
+    height: 470px;
+    margin: 10px 0;
     border: solid 1px #707070;
     border-radius: 0.5rem;
     background-color:var(--tuna);
