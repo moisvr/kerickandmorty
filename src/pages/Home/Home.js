@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import FavoriteCard from '../../components/FavoriteCard/FavoriteCard';
 import InfoFavoriteCard from '../../components/InfoFavoriteCard/InfoFavoriteCard';
 import Loader from '../../components/Loader/Loader';
+import MyCarousel from '../../components/Carousel/MyCarousel';
 
-import wp1 from '../../assets/img/WP-1.png';
-import wp2 from '../../assets/img/WP-2.jpg';
 import errorImg from '../../assets/img/RaM.png';
 import './Home.css';
 
@@ -143,18 +141,7 @@ class Home extends React.Component {
             return(
                 <main>
                 <section className="main-slider">
-                    <section className="main-slider--slides">
-                        <article className="main-slider--card">
-                            <img className="main-slider--item" src={wp1} alt="imagen del carrusel" />
-                            <img className="main-slider--item" src={wp2} alt="imagen del carrusel" />
-                        </article>
-                    </section>
-                    <Link to={'/'} id="toLeft" onClick={this.moveSlider} href="#" className="main-slider--left-arrow">
-                        <span className="main-slider--left-arrow-span"></span>
-                    </Link>
-                    <Link onClick={this.moveSlider} id="toRight" to={'/'} className="main-slider--right-arrow">
-                        <span className="main-slider--right-arrow-span"></span>
-                    </Link>
+                    <MyCarousel />
                 </section>
                 <section className="main-favorites">
                     <h1>No data found!</h1>
@@ -171,18 +158,7 @@ class Home extends React.Component {
         return (
             <main>
                 <section className="main-slider">
-                    <section className="main-slider--slides">
-                        <article className="main-slider--card">
-                            <img className="main-slider--item" src={wp1} alt="imagen del carrusel" />
-                            <img className="main-slider--item" src={wp2} alt="imagen del carrusel" />
-                        </article>
-                    </section>
-                    <Link to={'/'} id="toLeft" onClick={this.moveSlider} href="#" className="main-slider--left-arrow">
-                        <span className="main-slider--left-arrow-span"></span>
-                    </Link>
-                    <Link onClick={this.moveSlider} id="toRight" to={'/'} className="main-slider--right-arrow">
-                        <span className="main-slider--right-arrow-span"></span>
-                    </Link>
+                    <MyCarousel />
                 </section>
                 <section className="main-favorites">
                     <h1>Characters</h1>
