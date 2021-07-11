@@ -97,7 +97,6 @@
     padding: 10px;
     border-radius: 10px;
     background-color: rgb(53, 53, 53);
-    overflow-x: scroll;
 }
 .main-characters--cards-container .favorite-card{
     margin: 20px auto;

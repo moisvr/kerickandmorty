@@ -112,7 +112,7 @@
 .favorite-cards--all-characters-container{
     text-align: center;
 }
-.favorite-cards--all-characters-container button {
+.favorite-cards--all-characters-container button{
     width: 150px;
     height: 50px;
     margin: 20px auto;
