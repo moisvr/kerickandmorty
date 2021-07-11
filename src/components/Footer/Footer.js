@@ -8,21 +8,21 @@ function Footer() {
     return (
         <footer>
             <section className="info">
+                <div className="contact">
+                    <h3>Contact</h3>
+                    <a className="footer-link" href="mailto:moiavr09@gmail.com">moiavr09@gmail.com</a>
+                </div>
                 <div className="material">
                     <h3>Material</h3>
                     <div className="api">
-                        <p>Icons by <span className="flatic"><a href="https://flaticon.com" target="_blank">flaticon</a></span></p><span className="flaticon--icon"></span>
+                        <p>Icons by <span className="flatic"><a className="footer-link" href="https://flaticon.com" target="_blank">flaticon</a></span></p><span className="flaticon--icon"></span>
                     </div>
                     <div className="api">
-                        <p>API by <a href="https://rickandmortyapi.com" target="_blank">rickandmortyapi.com</a></p><span className="api--icon"></span>
+                        <p>API by <a className="footer-link" href="https://rickandmortyapi.com" target="_blank">rickandmortyapi.com</a></p><span className="api--icon"></span>
                     </div>
                     <div className="api">
-                    <p>Some images provided by <a href="https://storyset.com/" target="_blank">storyset</a></p><span className="storyset--icon"></span>
+                        <p>Some images provided by <a className="footer-link" href="https://storyset.com/" target="_blank">storyset</a></p><span className="storyset--icon"></span>
                     </div>
-                </div>
-                <div className="contact">
-                    <h3>Contact</h3>
-                    <a href="mailto:moiavr09@gmail.com">moiavr09@gmail.com</a>
                 </div>
                 <div className="media">
                     <h3>Media</h3>

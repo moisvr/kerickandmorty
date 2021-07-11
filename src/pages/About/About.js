@@ -10,7 +10,7 @@ function About() {;
     return (
         <main className="main-aboutus">
             <section className="about">
-                <section className="about--container">
+                <section className="about--container about--container__reversed">
                     <div className="about--info">
                         <h1>About this page</h1>
                         <p>Portland selfies locavore pabst typewriter thundercats kickstarter artisan subway tile meggings kombucha readymade mustache cloud bread squid. Hexagon tousled retro brooklynFixie health goth celiac, heirloom woke farm-to-table four loko shaman lomo biodiesel polaroid cronut chartreuse.</p>
@@ -32,7 +32,7 @@ function About() {;
                 </section>
             </section>
             <section className="about">
-                <section className="about--container">
+                <section className="about--container about--container__reversed">
                     <div className="about--info">
                         <h1>About the API</h1>
                         <p>Portland selfies locavore pabst typewriter thundercats kickstarter artisan subway tile meggings kombucha readymade mustache cloud bread squid. Hexagon tousled retro brooklynFixie health goth celiac, heirloom woke farm-to-table four loko shaman lomo biodiesel polaroid cronut chartreuse.</p>
