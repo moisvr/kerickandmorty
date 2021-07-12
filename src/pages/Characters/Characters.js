@@ -26,7 +26,8 @@ class Characters extends React.Component {
                 species: '',
                 gender: ''
             },
-            extraInfo: {}
+            extraInfo: {},
+            isMobile: true
         }
     }
 
@@ -136,7 +137,20 @@ class Characters extends React.Component {
             : this.setState({ display: false });
     }
 
+    componentDidMount() {
+        window.innerWidth < 885 
+                ? this.setState({ isMobile: true }) 
+                : this.setState({ isMobile: false });
+
+        window.addEventListener("resize", () => {
+            window.innerWidth < 885 
+                ? this.setState({ isMobile: true }) 
+                : this.setState({ isMobile: false });
+        });
+    }
+
     render(){
+        let isMobile = this.state.isMobile;
         let searchForm;
         let emptyCard;
         let extraInfo;
@@ -144,7 +158,7 @@ class Characters extends React.Component {
         let isFormVisible = this.state.display;
         let charactersData = this.state.data;
         let rotate_class = "main-characters--head__rotate-span";
-        if(isFormVisible){
+        if(isFormVisible || !isMobile){
             searchForm = <section>
                             <SearchForm 
                                 onSubmit={this.handleSubmit} 
@@ -174,8 +188,8 @@ class Characters extends React.Component {
         if(this.state.error){
             return (
                 <main className="main-characters">
-                    <div className="main-characters--head">
-                        <h1>Characters Page</h1>
+                    <h1>Characters Page</h1>
+                    <div className="main-characters--head">                        
                         <button onClick={this.handleDropDownForm}>
                             sort by <span className={rotate_class}></span>
                         </button>
@@ -188,6 +202,49 @@ class Characters extends React.Component {
                         </div>
                         <p>Looks like the data inserted in the form didn't found anything, try again</p>
                     </div>
+                </main>
+            )
+        }
+        if(!this.state.isMobile){
+            return (
+                <main className="main-characters">
+                    <h1>Characters Page</h1>
+                    <div className="main-characters--head">
+                        <div className="main-characters--loader-container">
+                            <Loader loading={this.state.loading} />
+                        </div>
+                    </div>
+
+                    <section className="main-characters--container">
+                        {/* {searchForm} */}
+                        <div className="main-characters--form-container">
+                            <h2>Sort by</h2>
+                            {searchForm}
+                        </div>
+                        <section className="main-characters--cards-container">
+                            {emptyCard}
+                            {charactersData.map((characters) => {
+                                return (
+                                    <FavoriteCard
+                                        key={characters.id}
+                                        char_id={characters.id}
+                                        img={characters.image}
+                                        name={characters.name}
+                                        status={characters.status}
+                                        species={characters.species}
+                                        location={characters.location.name}
+                                        species={characters.species}
+                                        origin={characters.origin.name}
+
+                                        onOpenModal={this.handleOpenModal} 
+                                        onCloseModal={this.handleCloseModal} 
+                                    />
+                                )
+                            })}
+                        </section>
+                    </section>
+                    {noInfoYetText}
+                    {extraInfo}
                 </main>
             )
         }

@@ -28,7 +28,7 @@ class Header extends React.Component {
             window.innerWidth < 885 
                 ? this.setState({ isMobile: true }) 
                 : this.setState({ isMobile: false });
-        })
+        });
     }
 
     render(){
