@@ -216,7 +216,6 @@ class Characters extends React.Component {
                     </div>
 
                     <section className="main-characters--container">
-                        {/* {searchForm} */}
                         <div className="main-characters--form-container">
                             <h2>Sort by</h2>
                             {searchForm}

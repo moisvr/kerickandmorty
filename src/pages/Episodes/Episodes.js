@@ -21,7 +21,8 @@ class Episodes extends React.Component {
                 name: '',
                 episode: '',
                 air_date: ''
-            }
+            },
+            isMobile: true
         }
     }
 
@@ -85,6 +86,17 @@ class Episodes extends React.Component {
         });
     }
 
+    componentDidMount() {
+        window.innerWidth < 885 
+                ? this.setState({ isMobile: true }) 
+                : this.setState({ isMobile: false });
+        window.addEventListener("resize", () => {
+            window.innerWidth < 885 
+                ? this.setState({ isMobile: true }) 
+                : this.setState({ isMobile: false });
+        });
+    }
+
     render(){
         let searchForm;
         let emptyCard;
@@ -92,9 +104,10 @@ class Episodes extends React.Component {
         let rotate_class = "main-characters--head__rotate-span";
         let isFormVisible = this.state.display;
         let episodesData = this.state.data;
+        let isMobile = this.state.isMobile;
 
         // Form visibility
-        if(isFormVisible){
+        if(isFormVisible || !isMobile){
             searchForm = <section>
                             <SearchFormEpisodes 
                                 onSubmit={this.handleSubmit} 
@@ -116,8 +129,8 @@ class Episodes extends React.Component {
         }
         if(this.state.error){
             return (
-                <main className="main-locations">
-                    <div className="main-locations--head">
+                <main className="main-episodes">
+                    <div className="main-episodes--head">
                         <h1>Locations Page</h1>
                         <button onClick={this.handleDropDownForm}>
                             sort by <span className={rotate_class}></span>
@@ -131,6 +144,42 @@ class Episodes extends React.Component {
                         </div>
                         <p>Looks like the data inserted in the form didn't found anything, try again!</p>
                     </div>
+                </main>
+            )
+        }
+        if(!this.state.isMobile){
+            return (
+                <main className="main-episodes">
+                    <h1>Characters Page</h1>
+                    <div className="main-episodes--head">
+                        <div className="main-episodes--loader-container">
+                            <Loader loading={this.state.loading} />
+                        </div>
+                    </div>
+
+                    <section className="main-episodes--container">
+                        <div className="main-episodes--form-container">
+                            <h2>Sort by</h2>
+                            {searchForm}
+                        </div>
+                        <section className="main-characters--cards-container">
+                            {emptyCard}
+                            {episodesData.map((episode) => {
+                                let num = episode.id;
+                                return (
+                                    <FavoriteCardepisodes 
+                                        key={episode.id}
+                                        number={num}
+                                        name={episode.name}
+                                        air_date={episode.air_date}
+                                        episode={episode.episode}
+                                        characters={episode.characters}
+                                    />
+                                )
+                            })};
+                        </section>
+                    </section>
+                    {noInfoYetText}
                 </main>
             )
         }
