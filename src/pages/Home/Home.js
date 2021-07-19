@@ -4,6 +4,7 @@ import FavoriteCard from '../../components/FavoriteCard/FavoriteCard';
 import InfoFavoriteCard from '../../components/InfoFavoriteCard/InfoFavoriteCard';
 import Loader from '../../components/Loader/Loader';
 import MyCarousel from '../../components/Carousel/MyCarousel';
+import { Link } from 'react-router-dom';
 
 import errorImg from '../../assets/img/RaM.png';
 import './Home.css';
@@ -151,6 +152,10 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <p>An error has ocurred during the request of the data, try again later!</p>
+                    <div className="favorite-cards--all-characters-container">
+                        <button><Link to="/characters">All characters</Link></button>
+                        <Link className="favorite-cards--all-characters-container-button" to="/characters">All characters</Link>
+                    </div>
                 </section>
             </main>
             )
@@ -187,7 +192,7 @@ class Home extends React.Component {
                         <p>Current total: {totalCount}</p>
                     </div>
                     <div className="favorite-cards--all-characters-container">
-                        <button>All characters</button>
+                        <Link className="favorite-cards--all-characters-container-button" to="/characters"><button>All characters</button></Link>
                     </div>
                     {extraInfo}
                 </section>

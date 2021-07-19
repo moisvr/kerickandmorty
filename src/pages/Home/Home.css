@@ -99,6 +99,50 @@ main {
 .favorite-cards--container .favorite-cards--img-container img{
     width: 100%;
 }
+.favorite-cards--all-characters-container button > a {
+    text-decoration: none;
+    color: #FFFFFF;
+    list-style: none;
+    cursor: pointer;
+}
+.favorite-cards--all-characters-container button{
+    cursor: pointer;
+}
+.favorite-cards--all-characters-container-button {
+    width: 150px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: var(--tuna);
+    box-shadow: 0px 4px 8px rgb(89 73 30 / 16%);
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    transition: 0.2s;
+    text-decoration: none;
+}
+.favorite-cards--all-characters-container-button button:hover {
+    box-shadow: 0px 0px 15px 5px #ff9800;
+}
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 8px;
+    background-color: #535353;
+    /* border: 4px solid rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    background: rgb(83, 83, 83); */
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	/* background: rgb(155, 155, 155);  */
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 8px;
+    background-color: #aaaaaa;
+}
 
 /** Tablet responsive */
 @media (min-width: 885px){

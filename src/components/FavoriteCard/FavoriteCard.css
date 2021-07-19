@@ -93,6 +93,9 @@
     transition: 0.2s;
     cursor: pointer;
 }
+.favorite-card--button:hover{
+    box-shadow: 0px 0px 10px 5px #ffa51e;
+}
 .favorite-card--button:active{
     box-shadow: 0px 0px 15px 5px #ff9800;
 }
@@ -112,7 +115,7 @@
 .favorite-cards--all-characters-container{
     text-align: center;
 }
-.favorite-cards--all-characters-container button {
+.favorite-cards--all-characters-container button{
     width: 150px;
     height: 50px;
     margin: 20px auto;

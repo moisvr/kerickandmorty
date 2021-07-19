@@ -23,7 +23,7 @@ class Locations extends Component {
                 type: '',
                 dimension: ''
             },
-            extraInfo: {}
+            isMobile: true
         }
     }
     
@@ -90,6 +90,18 @@ class Locations extends Component {
         });
     }
 
+    componentDidMount() {
+        window.innerWidth < 885 
+                ? this.setState({ isMobile: true }) 
+                : this.setState({ isMobile: false });
+
+        window.addEventListener("resize", () => {
+            window.innerWidth < 885 
+                ? this.setState({ isMobile: true }) 
+                : this.setState({ isMobile: false });
+        });
+    }
+
     render() {
         let searchForm;
         let emptyCard;
@@ -97,8 +109,9 @@ class Locations extends Component {
         let rotate_class = "main-characters--head__rotate-span";
         let isFormVisible = this.state.display;
         let locationsData = this.state.data;
+        let isMobile = this.state.isMobile;
 
-        if(isFormVisible){
+        if(isFormVisible || !isMobile){
             searchForm = <section>
                             <SearchFormLocations 
                                 onSubmit={this.handleSubmit} 
@@ -135,6 +148,40 @@ class Locations extends Component {
                         </div>
                         <p>Looks like the data inserted in the form didn't found anything, try again!</p>
                     </div>
+                </main>
+            )
+        }
+        if(!this.state.isMobile){
+            return (
+                <main className="main-locations">
+                    <h1>Characters Page</h1>
+                    <div className="main-locations--head">
+                        <div className="main-locations--loader-container">
+                            <Loader loading={this.state.loading} />
+                        </div>
+                    </div>
+
+                    <section className="main-locations--container">
+                        <div className="main-locations--form-container">
+                            <h2>Sort by</h2>
+                            {searchForm}
+                        </div>
+                        <section className="main-characters--cards-container">
+                            {emptyCard}
+                            {locationsData.map((location) => {
+                                return (
+                                    <FavoriteCardLocations 
+                                        key={location.id}
+                                        name={location.name}
+                                        dimension={location.dimension}
+                                        type={location.type}
+                                        residents={location.residents}
+                                    />
+                                )
+                            })}
+                        </section>
+                    </section>
+                    {noInfoYetText}
                 </main>
             )
         }

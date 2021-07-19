@@ -59,3 +59,13 @@ header {
 .header--dropdown-menu .header--dropdown-menu__underline {
     border-bottom: 1px solid var(--off-white);
 }
+
+@media (min-width: 1024px){
+    .header--menu {
+        min-width: 885px;
+        max-width: 1224px;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

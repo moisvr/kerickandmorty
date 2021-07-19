@@ -37,14 +37,21 @@
 }
 
 /** Responsive */
-@media (min-width: 600px) {
-    .about--img__last {
-        padding-bottom: 40px;
-    }
-}
 
-@media (min-width: 1300px){
-    .main-slider {
-        /* max-height: 600px; */
+@media (min-width: 885px) {
+    .about--container{
+        max-width: 1224px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .about--container > div {
+        width: 50%;
+    }
+    .about--container__reversed {
+        flex-direction: row-reverse;
+    }
+    .about--info p {
+        max-width: 490px;
+        margin: 0 auto;
     }
 }
