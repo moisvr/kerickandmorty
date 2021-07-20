@@ -1,13 +1,14 @@
 import React from 'react';
+import './FavoriteCardEpisodes.css';
 
 function FavoriteCardEpisodes(props) {
     let characters = props.characters.slice(0,9);
     let nSeason = props.episode.slice(1, 3);
     let nEpisode = props.episode.slice(4, 6);
     return (
-        <article className="favorite-card">
+        <article className="favorite-card favorite-card__episodes">
             <div className="favorite-card--title">
-                <h2 className="favorite-card--title__locations">Episode: {props.name}</h2>
+                <h2 className="favorite-card--title__locations">{props.name}</h2>
             </div>
             <div className="favorite-card--location-container">
                 <p className="favorite-card__description-text favorite-card__air-date">Season:</p>
